@@ -1,0 +1,19 @@
+// optimized coding ninjas
+import java.util.HashSet;
+public class Solution {
+
+	public static int findDuplicate(int[] arr) {
+		//Your code goes here
+        HashSet<Integer> map=new HashSet<>();
+        int res=0;
+        for(int i=0;i<arr.length;i++){
+            if(map.contains(arr[i])){
+                res = arr[i];
+                break;
+            }
+            else
+                map.add(arr[i]);
+        }
+        return res;
+	}
+}
