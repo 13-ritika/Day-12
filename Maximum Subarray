@@ -1,0 +1,30 @@
+//https://leetcode.com/problems/maximum-subarray/
+// Iterative
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int sum=nums[0];
+        for(int i=1;i<nums.length;i++)
+            sum+= nums[i];
+        for(int i=0;i<nums.length-1;i++){
+            int sub_sum = nums[i];
+            for(int j=i+1;j<nums.length;j++){
+                sub_sum = sub_sum+ nums[j];
+                sum = Math.max(nums[i],Math.max(sum,sub_sum));
+            }
+        }
+        if(sum<nums[nums.length-1]) return nums[nums.length-1];
+         
+        return sum;
+    }
+}
+
+// study this
+int dp[] = new int[nums.length];
+        dp[0] = nums[0];
+        int max = dp[0];
+        for(int i=1;i<nums.length;i++){
+            dp[i] = Math.max(nums[i], dp[i-1]+nums[i]);
+            max = Math.max(dp[i],max);
+        }
+
+        return max;
